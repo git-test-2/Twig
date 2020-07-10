@@ -1,0 +1,29 @@
+<?php
+
+$allMessages = $data['messages'];
+?>
+
+<form enctype="multipart/form-data" action="blog" method="post">
+    <label for="text"><b>Message</b></label>
+    <label>
+        <input type="text" placeholder="Enter Text" name="text" required>
+    </label>
+    <label>
+        <input name="userfile" type="file"/><br>
+    </label>
+    <button type="submit" class="registerbtn">Send</button>
+</form>
+
+<form  action="adminBlog" method="get">
+<ul>
+     {% for message in messages %}
+        <li>
+            <input name="{{ message.id }}" type="submit" value="Удалить">
+            <pre>{{ message.text }}</pre>
+            <pre>{{ message.created_at }}</pre>
+            <pre>{{ message.name }}</pre>
+            <img src="/images/{{ message.id }}.jpg" alt="pic">
+        </li>
+     {% endfor %}
+</ul>
+</form>
