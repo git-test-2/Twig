@@ -9,6 +9,13 @@ use App\Controllers\BlogController;
 
 include __DIR__ . "\..\config.php";
 
+if (strpos($_SERVER['REQUEST_URI'], '/adminUsers') !== false) {
+    $controller = new \App\Controllers\AdminBlogConroller();
+    $controller->users();
+    return 0;
+
+}
+
 if (strpos($_SERVER['REQUEST_URI'], '/main') !== false) {
     $controller = new FrontController();
     $controller->index();
@@ -39,3 +46,6 @@ if (strpos($_SERVER['REQUEST_URI'], '/adminBlog') !== false) {
     $controller->index();
     return 0;
 }
+
+
+

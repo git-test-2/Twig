@@ -19,6 +19,27 @@ class User extends Base
         $this->microBlogTable->save();
     }
 
+    public function delete($id)
+    {
+        $result = $this->microBlogTable
+            ->newQuery()
+            ->where('id', '=', $id)
+            ->delete();
+        return intval($result);
+    }
+
+    public function edit($user)
+    {
+        $result = $this->microBlogTable
+            ->newQuery()
+            ->where('id', '=', $user['id_change'])
+            ->update(['name' => $user['name_change'],
+                    'email' => $user['email_change'],
+                    'password' => password_hash($user['password_change'], PASSWORD_BCRYPT)]
+            );
+        return $result;
+    }
+
 
 
 }

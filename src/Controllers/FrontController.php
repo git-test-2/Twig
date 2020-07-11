@@ -11,7 +11,7 @@ Class FrontController extends BaseController
         $this->render('front/index',['array'=>123]);
     }
 
-    private function validationRegisterForm(array $post)
+    public function validationRegisterForm(array $post)
     {
         $result = [];
         if (empty($post['name'])) {

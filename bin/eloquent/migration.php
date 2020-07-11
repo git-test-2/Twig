@@ -24,7 +24,6 @@ try {
         $table->integer('author_id');
     });
 
-
     Capsule::schema()->dropIfExists('categories');
 
     Capsule::schema()->create('categories', function (Blueprint $table) {
@@ -41,8 +40,7 @@ try {
     Capsule::schema()->create('products', function (Blueprint $table) {
         $table->increments('id');
         $table->string('name');
-        $table->string('category_id')->unsigned();
-        $table->foreign('category_id')->references('id')->on('categories');
+        $table->string('category_id');
         $table->timestamps();
     });
 

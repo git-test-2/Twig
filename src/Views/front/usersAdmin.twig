@@ -1,0 +1,67 @@
+{% set allErrors = error %}
+<form action="adminUsers" method="post">
+    <div class="container">
+        {{ result }}
+        <h1>AddUser</h1>
+        <label for="name"><b>Name</b></label>
+        <input type="text" placeholder="Enter Name" name="name" required>
+
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="password-repeat" required>
+        <hr>
+        <button type="submit" class="registerbtn">Add</button>
+    </div>
+</form>
+<pre><?= $data["result"] ?></pre>
+<ul>
+    {% for error in allErrors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+</ul>
+{{ result }}
+<form action="adminUsers" method="post">
+    <h1>Edit user: {{ edit.email }}</h1>
+
+    <label for="id"><b>id</b></label>
+    <input type="text" placeholder="Enter id" name="id_change" required>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" name="name_change" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email_change" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password_change" required>
+    <hr>
+    <button type="submit" class="registerbtn">Edit</button>
+</form>
+<form action="adminUsers" method="get">
+    <ul>
+        {% for elem in list %}
+            <li>
+                <ul>
+
+                        <li>
+                            {{ elem.id }}
+                        </li>
+                        <li>
+                            {{ elem.name }}
+                        </li>
+                        <li>
+                            {{ elem.email }}
+                        </li>
+
+                    <input name="{{ elem.id }}" type="submit" value="Delete">
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</form>
